@@ -40,8 +40,5 @@ let app = new Vue({
             return this.variants[this.selectedVariant].variantImage;
         }
     },
-    inStock(){
-        return this.variants[this.selectedVariant].variantQuantity
-    }
 })
 
