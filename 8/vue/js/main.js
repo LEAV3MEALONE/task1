@@ -1,3 +1,17 @@
+Vue.component('product-details', {
+    props: {
+        details: {
+            type: Array,
+            required: true
+        }
+    },
+    template: `
+    <ul>
+      <li v-for="detail in details">{{ detail }}</li>
+    </ul>
+  `
+})
+
 Vue.component('product', {
     props: {
         premium: {
@@ -18,7 +32,7 @@ Vue.component('product', {
           <ul>
             <li v-for="detail in details">{{ detail }}</li>
           </ul>
-          <p>User is premium: {{ premium }}</p>
+          <p>shipping: {{ shipping }}</p>
           <div
               class="color-box"
               v-for="(variant, index) in variants"
@@ -84,7 +98,15 @@ Vue.component('product', {
         },
         inStock(){
             return this.variants[this.selectedVariant].variantQuantity
+        },
+        shipping() {
+            if (this.premium) {
+                return "Free";
+            } else {
+                return 2.99
+            }
         }
+
     }
 })
 let app = new Vue({
@@ -92,6 +114,7 @@ let app = new Vue({
     data: {
         premium: true
     },
+
     methods: {
 
     },
