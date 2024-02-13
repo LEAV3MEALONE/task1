@@ -38,7 +38,13 @@ let app = new Vue({
         },
         image() {
             return this.variants[this.selectedVariant].variantImage;
+        },
+        inStock(){
+            return this.variants[this.selectedVariant].variantQuantity
+        },
+        onSale(){
+            return this.brand + ' ' + this.product + ' Sale !'
         }
-    },
+    }
 })
 
